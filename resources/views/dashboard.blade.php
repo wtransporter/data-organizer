@@ -6,6 +6,7 @@
     </x-slot>
 
     <div class="py-12">
+        <x-message />
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden grid md:grid-cols-3 lg:grid-cols-4 md:gap-2">
                 @foreach ($candidates as $candidate)

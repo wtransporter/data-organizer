@@ -20,4 +20,5 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::get('/dashboard', [CandidateController::class, 'index'])->name('dashboard');
+    Route::resource('candidates', CandidateController::class);
 });
