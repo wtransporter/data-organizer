@@ -7,8 +7,13 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-welcome />
+            <div class="overflow-hidden grid md:grid-cols-3 lg:grid-cols-4 md:gap-2">
+                @foreach ($candidates as $candidate)
+                    <x-candidate-card :candidate="$candidate" />
+                @endforeach
+            </div>
+            <div class="mt-4">
+                {{ $candidates->links() }}
             </div>
         </div>
     </div>
