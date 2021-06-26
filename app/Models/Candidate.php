@@ -10,4 +10,8 @@ class Candidate extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    protected $dates = [
+        'birth_date'
+    ];
 }

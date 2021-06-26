@@ -15,6 +15,17 @@ class CandidateController extends Controller
     }
 
     /**
+     * Show specified resource
+     *
+     * @param Candidate $candidate
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Candidate $candidate)
+    {
+        return view('candidates.show', compact('candidate'));
+    }
+
+    /**
      * Display form for creating new resource
      *
      * @return \Illuminate\Http\Response
