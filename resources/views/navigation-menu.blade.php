@@ -18,6 +18,9 @@
                     <x-jet-nav-link href="{{ route('candidates.create') }}" :active="request()->routeIs('candidates.create')">
                         {{ __('Add candidate') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('technologies.index') }}" :active="request()->routeIs('technologies.index')">
+                        {{ __('Technologies') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 

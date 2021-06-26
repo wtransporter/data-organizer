@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\CandidateController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\TechnologyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,5 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::get('/dashboard', [CandidateController::class, 'index'])->name('dashboard');
     Route::resource('candidates', CandidateController::class);
+    Route::resource('technologies', TechnologyController::class);
 });
