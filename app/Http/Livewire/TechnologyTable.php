@@ -12,6 +12,31 @@ class TechnologyTable extends Component
 
     public $confirmingTechnologyDeletion = false;
     public $model_id;
+    public $title;
+
+    protected function rules()
+    {
+        return [
+            'title' => 'required|unique:technologies,title'
+        ];
+    }
+
+    public function store()
+    {
+        $this->validate();
+
+        Technology::create($this->loadData());
+
+        $this->reset();
+        $this->resetValidation();
+    }
+
+    public function loadData()
+    {
+        return [
+            'title' => $this->title
+        ];
+    }
 
     public function confirmTechnologyDelete($id)
     {
@@ -21,9 +46,8 @@ class TechnologyTable extends Component
 
     public function deleteTechnology()
     {
-        $technology = Technology::find($this->model_id);
-        $technology->delete();
-        
+        Technology::find($this->model_id)->delete();
+
         $this->confirmingTechnologyDeletion = false;
     }
 
