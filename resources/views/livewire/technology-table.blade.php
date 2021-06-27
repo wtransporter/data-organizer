@@ -4,13 +4,16 @@
         <h5 class="text-xl font-semibold px-1">
             {{ __('Insert new technology') }}
         </h5>
-        <form wire:submit.prevent="store" method="POST" class="py-2 flex flex-col max-w-xs">
+        <form wire:submit.prevent="store" method="POST" class="py-2 flex flex-col max-w-md">
             @csrf
-            <div class="w-full flex justify-between">
-                <x-jet-input wire:model="title" type="text" id="title" name="title" placeholder="Title"/>
-                <x-jet-button type="submit" class="bg-blue-800 hover:bg-blue-600">
-                    {{ __('Submit') }}
-                </x-jet-button>
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center justify-items-start">
+                <x-jet-input wire:model="title" type="text" 
+                    id="title" name="title" placeholder="Title" class="w-full mr-2"/>
+                <div class="h-10 my-2 sm:my-0">
+                    <x-jet-button type="submit" class="bg-blue-800 hover:bg-blue-600 active:bg-blue-900 h-full">
+                        <span>{{ __('Submit') }}</span>
+                    </x-jet-button>
+                </div>
             </div>
             <x-jet-input-error for="title" class="mt-2 italic" />
         </form>

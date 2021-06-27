@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\TechnologyController;
+use App\Http\Controllers\CandidateTechnologyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,5 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::get('/dashboard', [CandidateController::class, 'index'])->name('dashboard');
     Route::resource('candidates', CandidateController::class);
     Route::resource('technologies', TechnologyController::class);
+    Route::resource('candidates.technologies', CandidateTechnologyController::class)->only('store');
 });

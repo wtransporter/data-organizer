@@ -28,6 +28,6 @@ class CreateCandidateTechnologyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('technology_user');
+        Schema::dropIfExists('candidate_technology');
     }
 }

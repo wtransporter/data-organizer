@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCandidateRequest;
 use App\Models\Candidate;
+use App\Models\Technology;
 
 class CandidateController extends Controller
 {
@@ -22,7 +23,10 @@ class CandidateController extends Controller
      */
     public function show(Candidate $candidate)
     {
-        return view('candidates.show', compact('candidate'));
+        return view('candidates.show', [
+            'candidate' => $candidate->load('technologies'),
+            'allTechnologies' => Technology::all()
+        ]);
     }
 
     /**

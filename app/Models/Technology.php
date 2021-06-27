@@ -11,8 +11,8 @@ class Technology extends Model
 
     protected $guarded = [];
 
-    public function users()
+    public function candidates()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(Candidate::class)->withTimestamps();
     }
 }

@@ -14,4 +14,18 @@ class Candidate extends Model
     protected $dates = [
         'birth_date'
     ];
+
+    public function technologies()
+    {
+        return $this->belongsToMany(Technology::class)->withTimestamps();
+    }
+
+    public function assignTechnology($technologies)
+    {
+        if (is_null($technologies)) {
+            return $this->technologies()->detach();
+        }
+
+        return $this->technologies()->sync($technologies);
+    }
 }
