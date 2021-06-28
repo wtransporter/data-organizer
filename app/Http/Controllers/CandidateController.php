@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCandidateRequest;
 use App\Models\Candidate;
 use App\Models\Technology;
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreCandidateRequest;
 
 class CandidateController extends Controller
 {
@@ -27,6 +28,38 @@ class CandidateController extends Controller
             'candidate' => $candidate->load('technologies'),
             'allTechnologies' => Technology::all()
         ]);
+    }
+
+    /**
+     * Display form for editing given resource
+     *
+     * @param Candidate $candidate
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Candidate $candidate)
+    {
+        return view('candidates.edit', [
+            'candidate' => $candidate,
+            'allTechnologies' => Technology::all()
+        ]);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param Candidate $candidate
+     * @param StoreCandidateRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Candidate $candidate, StoreCandidateRequest $request)
+    {
+        $attributes = $request->validated();
+        unset($attributes['technologies']);
+
+        $candidate->update($attributes);
+        $candidate->assignTechnology($request->get('technologies'));
+
+        return redirect()->route('candidates.edit', $candidate)->with('message', 'Candidate updated');
     }
 
     /**
