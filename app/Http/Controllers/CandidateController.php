@@ -36,7 +36,9 @@ class CandidateController extends Controller
      */
     public function create()
     {
-        return view('candidates.create');
+        return view('candidates.create', [
+            'allTechnologies' => Technology::all()
+        ]);
     }
 
     /**
@@ -48,7 +50,12 @@ class CandidateController extends Controller
      */
     public function store(Candidate $candidate, StoreCandidateRequest $request)
     {
-        $candidate->create($request->validated());
+        $attributes = $request->validated();
+        unset($attributes['technologies']);
+
+        $newCandidate = $candidate->create($attributes);
+
+        $newCandidate->assignTechnology($request->get('technologies'));
 
         return redirect()->route('dashboard')->with('message', 'Candidate successfully added');
     }

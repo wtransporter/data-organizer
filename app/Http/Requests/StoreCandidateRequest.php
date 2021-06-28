@@ -29,7 +29,20 @@ class StoreCandidateRequest extends FormRequest
             'phone' => 'sometimes',
             'college' => 'sometimes',
             'birth_date' => 'required|date',
-            'note' => 'sometimes'
+            'note' => 'sometimes',
+            'technologies' => 'required|array'
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'technologies.required' => 'At least one techmology must be selected'
         ];
     }
 }

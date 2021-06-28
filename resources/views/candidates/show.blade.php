@@ -6,9 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <x-message class="lg:mx-0"/>
         <div class="bg-white max-w-7xl mx-auto sm:p-6 lg:p-8 rounded">
-            <x-assign-technology :candidate="$candidate" :allTechnologies="$allTechnologies" />
             <div class="overflow-hidden p-2 md:p-0">
                 <table class="table-auto">
                     <thead>
