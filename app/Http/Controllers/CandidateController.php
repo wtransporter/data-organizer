@@ -11,9 +11,7 @@ class CandidateController extends Controller
 {
     public function index()
     {
-        return view('dashboard', [
-            'candidates' => Candidate::latest()->paginate(12)
-        ]);
+        return view('dashboard');
     }
 
     /**
