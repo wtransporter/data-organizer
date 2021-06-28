@@ -5,39 +5,67 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="bg-white max-w-7xl mx-auto sm:p-6 lg:p-8 rounded">
-            <div class="overflow-hidden p-2 md:p-0">
-                <table class="table-auto">
-                    <thead>
-                        <tr>
-                            <th class="px-4 py-2 border w-64">{{ __('Name') }}</th>
-                            <th class="px-4 py-2 border">{{ __('Address') }}</th>
-                            <th class="px-4 py-2 border">{{ __('Date of birth') }}</th>
-                            <th class="px-4 py-2 border">{{ __('Phone') }}</th>
-                            <th class="px-4 py-2 border">{{ __('College') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="border px-4 py-2">
-                                {{ $candidate->name }}
-                            </td>
-                            <td class="border px-4 py-2">
-                                {{ $candidate->address }}
-                            </td>
-                            <td  class="border px-4 py-2">
-                                {{ $candidate->birth_date->format('d.m.Y') }}
-                            </td>
-                            <td  class="border px-4 py-2">
-                                {{ $candidate->phone }}
-                            </td>
-                            <td  class="border px-4 py-2">
-                                {{ $candidate->college }}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+    <div class="py-12 p-4">
+        <div class="bg-white max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 rounded md:flex md:space-x-4">
+            <div class="flex-1">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        {{ __('Full name') }}
+                    </label>
+                    <label class="w-full py-2 text-gray-700">
+                        {{ $candidate->name }}
+                    </label>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        {{ __('Address') }}
+                    </label>
+                    <label class="w-full py-2 text-gray-700">
+                        {{ $candidate->address }}
+                    </label>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        {{ __('Date of birth') }}
+                    </label>
+                    <label class="w-full py-2 text-gray-700">
+                        {{ $candidate->birth_date->format('m.d.Y') }}
+                    </label>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        {{ __('Phone') }}
+                    </label>
+                    <label class="w-full py-2 text-gray-700">
+                        {{ $candidate->phone ?: '----' }}
+                    </label>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        {{ __('College') }}
+                    </label>
+                    <label class="w-full py-2 text-gray-700">
+                        {{ $candidate->college ?: '----' }}
+                    </label>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        {{ __('Note') }}
+                    </label>
+                    <p class="w-full py-2 text-gray-700">
+                        {{ $candidate->Note ?: '----' }}
+                    </p>
+                </div>
+            </div>
+            <div class="flex-1">
+                <h5>{{ __('Technologies') }}</h5>
+                <ul>
+                    @foreach ($candidate->technologies as $technology)
+                        <li>
+                            {{ $technology->title }}
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>
