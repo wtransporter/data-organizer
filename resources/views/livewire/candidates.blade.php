@@ -1,4 +1,12 @@
-<div>
+<div class="w-full">
+    <div class="w-full flex h-8 my-2">
+        <input wire:model.debounce.600ms="search" class="" 
+            id="search" type="text" placeholder="search">
+        <x-jet-button wire:click="clearSearch" type="submit" 
+            class="bg-blue-800 hover:bg-blue-600 active:bg-blue-900 h-full ml-4">
+            <span>{{ __('Clear') }}</span>
+        </x-jet-button>
+    </div>
     <div class="overflow-hidden grid md:grid-cols-3 lg:grid-cols-4 md:gap-2">
         @foreach ($candidates as $candidate)
             <x-candidate-card :candidate="$candidate" />

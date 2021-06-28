@@ -1373,8 +1373,14 @@ select {
 .flex-wrap {
 	flex-wrap: wrap;
 }
+.place-items-end {
+	place-items: end;
+}
 .items-start {
 	align-items: flex-start;
+}
+.items-end {
+	align-items: flex-end;
 }
 .items-center {
 	align-items: center;
@@ -1390,6 +1396,9 @@ select {
 }
 .justify-items-start {
 	justify-items: start;
+}
+.justify-items-end {
+	justify-items: end;
 }
 .gap-6 {
 	gap: 1.5rem;
