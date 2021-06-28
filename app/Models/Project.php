@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Candidate extends Model
+class Project extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    protected $dates = [
-        'birth_date'
-    ];
+    public function candidate()
+    {
+        return $this->belongsTo(Candidate::class);
+    }
 
     public function technologies()
     {
@@ -27,10 +28,5 @@ class Candidate extends Model
         }
 
         return $this->technologies()->sync($technologies);
-    }
-
-    public function projects()
-    {
-        return $this->hasMany(Project::class);
     }
 }

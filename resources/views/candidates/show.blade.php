@@ -69,4 +69,31 @@
             </div>
         </div>
     </div>
+
+    {{-- <x-jet-dialog-modal wire:model="showCreateProjectForm">
+        <x-slot name="title">
+            {{ __('Add projects') }}
+        </x-slot>
+
+        <x-slot name="content">
+                <div class="mt-4">
+                    <x-jet-input type="password" class="mt-1 block w-3/4"
+                                placeholder="{{ __('Password') }}"
+                                x-ref="password"
+                                wire:model.defer="password"
+                                wire:keydown.enter="deleteUser" />
+                    <x-jet-input-error for="password" class="mt-2" />
+                </div>
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="$toggle('showCreateProjectForm')" wire:loading.attr="disabled">
+                {{ __('Cancel') }}
+            </x-jet-secondary-button>
+
+            <x-jet-button class="ml-2" wire:click="saveProject" wire:loading.attr="disabled">
+                {{ __('Save') }}
+            </x-jet-button>
+        </x-slot>
+    </x-jet-dialog-modal> --}}
 </x-app-layout>

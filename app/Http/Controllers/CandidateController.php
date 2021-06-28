@@ -23,7 +23,7 @@ class CandidateController extends Controller
     public function show(Candidate $candidate)
     {
         return view('candidates.show', [
-            'candidate' => $candidate->load('technologies'),
+            'candidate' => $candidate->load(['technologies', 'projects']),
             'allTechnologies' => Technology::all()
         ]);
     }
@@ -88,6 +88,6 @@ class CandidateController extends Controller
 
         $newCandidate->assignTechnology($request->get('technologies'));
 
-        return redirect()->route('dashboard')->with('message', 'Candidate successfully added');
+        return redirect()->route('candidates.projects.create', $newCandidate)->with('message', 'Candidate successfully added. You can add experience');
     }
 }

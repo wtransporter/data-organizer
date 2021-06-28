@@ -15,4 +15,9 @@ class Technology extends Model
     {
         return $this->belongsToMany(Candidate::class)->withTimestamps();
     }
+
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class)->withTimestamps();
+    }
 }
