@@ -11,6 +11,9 @@
 
             <div class="md:flex md:space-x-4">
                 <div class="flex-1">
+                    @livewire('image-upload', ['candidate' => $candidate], key($candidate->id))
+                </div>
+                <div class="flex-1">
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             {{ __('Full name') }}
@@ -60,8 +63,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="flex-1">
-                    <h5>{{ __('Technologies') }}</h5>
+                <div class="flex-1 mb-4 md:mb-0">
+                    <h5 class="text-gray-700 text-sm font-bold">{{ __('Technologies') }}</h5>
                     <ul>
                         @foreach ($candidate->technologies as $technology)
                             <li>
