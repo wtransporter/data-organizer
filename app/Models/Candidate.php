@@ -33,4 +33,14 @@ class Candidate extends Model
     {
         return $this->hasMany(Project::class);
     }
+
+    public function tags()
+    {
+        return $this->hasMany(Tag::class);
+    }
+
+    public function addTag($title)
+    {
+        return $this->tags()->create(['title' => $title]);
+    }
 }

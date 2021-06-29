@@ -72,6 +72,10 @@
                             </li>
                         @endforeach
                     </ul>
+                    <div class="mt-4">
+                        <h5 class="text-gray-700 text-sm font-bold border-b py-1 mb-2">{{ __('Tags') }}</h5>
+                        @livewire('custom-tags', ['tags' => $candidate->tags], key($candidate->id))
+                    </div>
                 </div>
             </div>
                 <h5 class="text-xl italic border-t border-b py-2 mb-2">{{ __('Attachment') }}</h5>
