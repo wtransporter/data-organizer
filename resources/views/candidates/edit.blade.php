@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                         </div>
-                        <x-assign-technology :allTechnologies="$allTechnologies" :candidate="$candidate" />
+                        <x-assign-technology :allTechnologies="$allTechnologies" :model="$candidate" />
                         <div class="flex items-center justify-between">
                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
                                 type="submit">

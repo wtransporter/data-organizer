@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateCandidateProjectRequest;
+use App\Models\Project;
 use App\Models\Candidate;
 use App\Models\Technology;
+use App\Http\Requests\CreateCandidateProjectRequest;
 
 class CandidateProjectController extends Controller
 {
@@ -20,6 +21,38 @@ class CandidateProjectController extends Controller
             'candidate' => $candidate,
             'allTechnologies' => Technology::all()
         ]);
+    }
+
+    /**
+     * Show form for editing given resource
+     *
+     * @param Candidate $candidate
+     * @param Project $project
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Candidate $candidate, Project $project)
+    {
+        return view('projects.edit', [
+            'candidate' => $candidate,
+            'project' => $project,
+            'allTechnologies' => Technology::all()
+        ]);
+    }
+
+    /**
+     * Update given resource
+     *
+     * @param Candidate $candidate
+     * @param Project $project
+     * @param CreateCandidateProjectRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Candidate $candidate, Project $project, CreateCandidateProjectRequest $request)
+    {
+        $project->update($request->only(['title', 'description']));
+        $project->assignTechnology($request->get('technologies'));
+        
+        return redirect()->route('candidates.projects.edit', [$candidate, $project])->with('message', 'Experience updated');
     }
 
     /**

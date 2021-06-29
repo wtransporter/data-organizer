@@ -8,7 +8,7 @@
         <div class="flex flex-col items-center h-5">
             <input id="check{{ $technology->id }}" name="technologies[{{ $technology->id }}]" type="checkbox" 
                 value="{{ $technology->id }}"
-                @if(isset($candidate) && $candidate->technologies->find($technology->id))
+                @if(isset($model) && $model->technologies->find($technology->id))
                     checked
                 @endif
                 class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
