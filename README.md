@@ -32,3 +32,14 @@ php artisan db:seed
 
 Users table contain demo user:</br>
 admin@test.com (passwords 12345678)</br>
+Create symlink
+
+```
+php artisan storage:link
+```
+
+Run server
+
+```
+php artisan serve
+```

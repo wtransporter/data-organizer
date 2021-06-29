@@ -12,12 +12,10 @@ class ImageUpload extends Component
 
     public $candidate;
     public $photo;
-    public $document;
 
     protected function rules() {
         return [
-            'photo' => 'image|mimes:png,jpg|max:1024',
-            'document' => 'file|mimes:pdf,txt'
+            'photo' => 'image|mimes:png,jpg|max:2048'
         ];
     }
 

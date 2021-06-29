@@ -6,7 +6,7 @@
         @if ($photo)
             <img src="{{ $photo->temporaryUrl() }}" class="w-32">
         @else
-            <img src="{{ asset('storage') }}/{{ $candidate->avatar ?? 'images/no-image.png' }}" alt="Avatar"
+            <img src="{{ $candidate->avatar ? asset('storage') .'/'. $candidate->avatar : asset('img/no-image.png') }}" alt="Avatar"
                 class="w-56">
         @endif
     </div>

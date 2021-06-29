@@ -6,7 +6,7 @@
 
         @if ($candidate->document)
             <a href="{{ asset('storage') }}/{{ $candidate->document }}" class="w-24 text-2xl">
-                <img src="{{ asset('storage/images/file.png') }}" alt="File" class="w-20">
+                <img src="{{ asset('img/file.png') }}" alt="File" class="w-20">
                 {{ __('View document') }}
             </a>
         @endif
