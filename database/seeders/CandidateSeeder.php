@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Candidate;
+use App\Models\Technology;
 use Illuminate\Database\Seeder;
 
 class CandidateSeeder extends Seeder
@@ -14,6 +15,9 @@ class CandidateSeeder extends Seeder
      */
     public function run()
     {
-        Candidate::factory(10)->create();
+        Candidate::factory(20)->create()->each(function($candidate) {
+                $technology = Technology::take(3)->inRandomOrder()->get();
+                    return $candidate->technologies()->sync($technology);
+            });
     }
 }

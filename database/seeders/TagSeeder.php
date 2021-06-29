@@ -15,7 +15,7 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        Candidate::take(6)->get()->each(function($candidate) {
+        Candidate::take(10)->get()->each(function($candidate) {
             return Tag::factory(5)->create(['candidate_id' => $candidate->id]);
         });
     }

@@ -47,6 +47,8 @@ class Candidates extends Component
                         ->orWhere('college', 'like', '%' . $this->search . '%')
                         ->orWhereHas('technologies', function($q) {
                             $q->where('title', 'like', '%' . $this->search . '%');
+                        })->orWhereHas('tags', function($q) {
+                            $q->where('title', 'like', '%' . $this->search . '%');
                         });
                 })->latest()->paginate(12)
         ]);

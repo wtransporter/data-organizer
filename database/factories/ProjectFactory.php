@@ -25,7 +25,7 @@ class ProjectFactory extends Factory
         return [
             'candidate_id' => Candidate::factory(),
             'title' => $this->faker->text(10),
-            'description' => $this->faker->text(25)
+            'description' => $this->faker->paragraph()
         ];
     }
 }
