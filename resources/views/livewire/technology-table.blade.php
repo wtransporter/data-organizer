@@ -37,7 +37,7 @@
                         <td class="border px-4 py-2">
                             <div class="flex items-center">
                                 <div class="w-4 mr-2">
-                                    <a href="{{ route('technologies.edit', [$technology]) }}" class="text-blue-700 hover:text-blue-500">
+                                    <a wire:click="showEditForm({{ $technology->id }})" href="#" class="text-blue-700 hover:text-blue-500">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                         </svg>
@@ -62,6 +62,30 @@
             </p>
         @endif
     </div>
+
+    <!-- Edit Technology -->
+    <x-jet-dialog-modal wire:model="managingTechnologies">
+        <x-slot name="title">
+            {{ __('Edit Technology') }}
+        </x-slot>
+
+        <x-slot name="content">
+            <label class="flex items-center">
+                <x-jet-input wire:model="title" id="title" name="title"/>
+                <x-jet-input-error for="title" />
+            </label>
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="$set('managingTechnologies', false)" wire:loading.attr="disabled">
+                {{ __('Cancel') }}
+            </x-jet-secondary-button>
+
+            <x-jet-button class="ml-2" wire:click="updateTechnology" wire:loading.attr="disabled">
+                {{ __('Save') }}
+            </x-jet-button>
+        </x-slot>
+    </x-jet-dialog-modal>
 
     <!-- Delete Technology Confirmation Modal -->
     <x-jet-confirmation-modal wire:model="confirmingTechnologyDeletion">

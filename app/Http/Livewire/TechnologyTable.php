@@ -2,22 +2,24 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Technology;
 use Livewire\Component;
+use App\Models\Technology;
 use Livewire\WithPagination;
+use Illuminate\Validation\Rule;
 
 class TechnologyTable extends Component
 {
     use WithPagination;
 
     public $confirmingTechnologyDeletion = false;
-    public $model_id;
+    public $managingTechnologies = false;
     public $title;
+    public $technology;
 
     protected function rules()
     {
         return [
-            'title' => 'required|unique:technologies,title'
+            'title' => ['required', Rule::unique('technologies')->ignore($this->technology)]
         ];
     }
 
@@ -38,15 +40,37 @@ class TechnologyTable extends Component
         ];
     }
 
-    public function confirmTechnologyDelete($id)
+    public function confirmTechnologyDelete(Technology $technology)
     {
         $this->confirmingTechnologyDeletion = true;
-        $this->model_id =$id;
+        $this->technology = $technology;
+    }
+
+    public function showEditForm(Technology $technology)
+    {
+        $this->managingTechnologies = true;
+        $this->technology = $technology;
+        $this->modelData();
+    }
+
+    public function modelData()
+    {
+        $this->title = $this->technology->title;
+    }
+
+    public function updateTechnology()
+    {
+        $this->validate();
+
+        $this->technology->update($this->loadData());
+
+        $this->reset();
+        $this->resetValidation();
     }
 
     public function deleteTechnology()
     {
-        Technology::find($this->model_id)->delete();
+        $this->technology->delete();
 
         $this->confirmingTechnologyDeletion = false;
     }
