@@ -73,4 +73,19 @@ class CandidateProjectController extends Controller
         return redirect()->route('candidates.projects.create', $candidate)
             ->with('message', 'Project ' . $project->title . ' successfully added');
     }
+
+    /**
+     * Delete given resource from database
+     *
+     * @param Candidate $candidate
+     * @param Project $project
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Candidate $candidate, Project $project)
+    {
+        $project->technologies()->detach();
+        $project->delete();
+
+        return redirect()->route('candidates.show', $candidate)->with('message', 'Project deleted');
+    }
 }

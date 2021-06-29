@@ -77,7 +77,7 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$set('managingTechnologies', false)" wire:loading.attr="disabled">
+            <x-jet-secondary-button wire:click="cancel" wire:loading.attr="disabled">
                 {{ __('Cancel') }}
             </x-jet-secondary-button>
 

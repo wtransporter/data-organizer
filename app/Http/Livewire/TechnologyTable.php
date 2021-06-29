@@ -29,8 +29,7 @@ class TechnologyTable extends Component
 
         Technology::create($this->loadData());
 
-        $this->reset();
-        $this->resetValidation();
+        $this->resetAll();
     }
 
     public function loadData()
@@ -48,6 +47,7 @@ class TechnologyTable extends Component
 
     public function showEditForm(Technology $technology)
     {
+        $this->resetAll();
         $this->managingTechnologies = true;
         $this->technology = $technology;
         $this->modelData();
@@ -64,8 +64,7 @@ class TechnologyTable extends Component
 
         $this->technology->update($this->loadData());
 
-        $this->reset();
-        $this->resetValidation();
+        $this->resetAll();
     }
 
     public function deleteTechnology()
@@ -73,6 +72,18 @@ class TechnologyTable extends Component
         $this->technology->delete();
 
         $this->confirmingTechnologyDeletion = false;
+    }
+
+    public function cancel()
+    {
+        $this->managingTechnologies = false;
+        $this->resetAll();
+    }
+
+    public function resetAll()
+    {
+        $this->reset();
+        $this->resetValidation();
     }
 
     public function render()
