@@ -1,5 +1,6 @@
 <div class="bg-white p-4 rounded">
     <x-message />
+    <x-message key="error" class="bg-red-500 text-gray-100"/>
     <div>
         <h5 class="text-xl font-semibold px-1">
             {{ __('Insert new technology') }}

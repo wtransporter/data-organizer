@@ -69,7 +69,11 @@ class TechnologyTable extends Component
 
     public function deleteTechnology()
     {
-        $this->technology->delete();
+        if (count($this->technology->candidates) > 0) {
+            session()->flash('error', 'This technology is assigned to a candidate');
+        } else {
+            $this->technology->delete();
+        }
 
         $this->confirmingTechnologyDeletion = false;
     }
