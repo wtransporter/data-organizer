@@ -68,6 +68,13 @@
                                         rows="4" id="note" name="note" placeholder="Note">{{ $candidate->note }}</textarea>
                                     <x-jet-input-error for="note" class="mt-1 italic" />
                                 </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="note">
+                                        {{ __('Custom tags') }}
+                                    </label>
+                                    @livewire('create-tag', ['candidate_id' => $candidate->id])
+                                    @livewire('custom-tags', ['candidate' => $candidate], key($candidate->id))
+                                </div>
                             </div>
                         </div>
                         <x-assign-technology :allTechnologies="$allTechnologies" :model="$candidate" />

@@ -6,9 +6,12 @@ use Livewire\Component;
 
 class CustomTags extends Component
 {
-    public $tags;
+    public $candidate;
 
-    protected $listeners = ['deleted' => '$refresh'];
+    protected $listeners = [
+        'deleted' => '$refresh',
+        'tagCreated' => '$refresh'
+    ];
 
     public function render()
     {

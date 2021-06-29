@@ -9,6 +9,8 @@ class Tag extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function candidate()
     {
         return $this->belongsTo(Candidate::class);
