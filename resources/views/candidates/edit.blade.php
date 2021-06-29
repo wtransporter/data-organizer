@@ -7,7 +7,7 @@
             </a>
         </h2>
     </x-slot>
-
+    <x-second-navbar :candidate="$candidate" />
     <div class="py-12">
         <x-message />
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
