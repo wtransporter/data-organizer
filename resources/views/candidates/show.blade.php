@@ -74,6 +74,8 @@
                     </ul>
                 </div>
             </div>
+                <h5 class="text-xl italic border-t border-b py-2 mb-2">{{ __('Attachment') }}</h5>
+                @livewire('upload-document', ['candidate' => $candidate], key($candidate->id))
                 <h5 class="text-xl italic border-t border-b py-2 mb-2">{{ __('Experience') }}</h5>
             <div>
                 <ul>
